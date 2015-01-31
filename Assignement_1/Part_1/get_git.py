@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 FILE = open("Config.txt","r")
+
 def start():
     STR1 = FILE.readline().partition("url = ")
     URL= STR1[2]
@@ -25,12 +26,19 @@ def start():
     return
 
 def clone(URL, ROOT_DIRECTORY):
-    import os, sys
-    if not os.path.exists(ROOT_DIRECTORY):
-        os.makedirs(ROOT_DIRECTORY, 0755)
-        cmd_string = "git clone %s %s" %(URL, ROOT_DIRECTORY)
-        os.system(cmd_string)
-    return
 
+    import re,os, sys
+
+    re =requests.get(URL)
+    data = re.text
+    soup = BeautifulSoup(data)
+    contents = soup.findAll(URL+'.getu')
+    if  not contents:
+        print URL
+        #if not os.path.exists(ROOT_DIRECTORY):
+         #   os.makedirs(ROOT_DIRECTORY, 0755)
+         #   cmd_string = "git clone %s %s" %(URL, ROOT_DIRECTORY)
+         #   os.system(cmd_string)
+    return
 
 start()
