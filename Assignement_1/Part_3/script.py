@@ -12,8 +12,10 @@ def start():
     gh = Github()
 
     s = gh.repos.list_contributors(user='poise',repo='python')
-
-    print(s.all())
+    for page in s:
+        for results in page:
+          print results
+    #print(s.all())
 
     return
 
