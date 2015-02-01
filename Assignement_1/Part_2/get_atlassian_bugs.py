@@ -23,15 +23,29 @@ def Filter_File():
     STR6 = FILE.readline().partition("root_directory=")
     ROOT_DIRECTORY = STR6[2]
 
-    from random import randint
-    for x in range(0, 2):
-        MTS = randint(1,MTS)
+   # from random import randint
+   # for x in range(0, 2):
+    #    MTS = randint(1,MTS)
+    Get_Content(URL,BUG_START,ROOT_DIRECTORY)
+    return
 
-    print URL
-    print PROJECT_TAG
-    print BUG_START
-    print BUG_END
-    print MTS
-    print ROOT_DIRECTORY
+def Get_Content(URL,BUG_Number,ROOT_DIRECTORY):
+    content = urllib2.urlopen(URL).read()
+    #print content
+    path = ROOT_DIRECTORY +"/"+ BUG_Number
+
+    import os
+    if not os.path.exists(path):
+        print path
+        os.makedirs(path, 0755)
+    else:
+        print "Path exists"
+
+    f = open(path+"/"+BUG_Number+".txt",'w+')
+    f.write(content)
+    f.read()
+    f.close()
+
+    return
 
 Filter_File()
