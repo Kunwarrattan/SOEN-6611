@@ -27,18 +27,20 @@ def start():
 
 def clone(URL, ROOT_DIRECTORY):
 
-    import re,os, sys
-
-    re =requests.get(URL)
-    data = re.text
-    soup = BeautifulSoup(data)
-    contents = soup.findAll(URL+'.getu')
-    if  not contents:
-        print URL
-        #if not os.path.exists(ROOT_DIRECTORY):
-         #   os.makedirs(ROOT_DIRECTORY, 0755)
-         #   cmd_string = "git clone %s %s" %(URL, ROOT_DIRECTORY)
-         #   os.system(cmd_string)
+    import re,os, sys,urllib2
+    content = urllib2.urlopen(URL).read()
+    pattern = URL + ".git"
+    if pattern in content:
+        print pattern
+        os.umask(0002)
+        os.makedirs(ROOT_DIRECTORY, 0777)
+        os.chmod(ROOT_DIRECTORY, 0777)
+       #.path.exists(ROOT_DIRECTORY))
+       #s.path.exists(ROOT_DIRECTORY):
+       #akedirs(ROOT_DIRECTORY, 0755)
+       #t "zumba"
+       #string = "git clone %s %s" %(URL, ROOT_DIRECTORY)
+       #ystem(cmd_string)
     return
 
 start()
