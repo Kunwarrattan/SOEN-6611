@@ -30,17 +30,23 @@ def clone(URL, ROOT_DIRECTORY):
     import re,os, sys,urllib2
     content = urllib2.urlopen(URL).read()
     pattern = URL + ".git"
-    if pattern in content:
-        print pattern
-        os.umask(0002)
-        os.makedirs(ROOT_DIRECTORY, 0777)
-        os.chmod(ROOT_DIRECTORY, 0777)
-       #.path.exists(ROOT_DIRECTORY))
-       #s.path.exists(ROOT_DIRECTORY):
-       #akedirs(ROOT_DIRECTORY, 0755)
-       #t "zumba"
-       #string = "git clone %s %s" %(URL, ROOT_DIRECTORY)
-       #ystem(cmd_string)
-    return
+    try:
+        if pattern in content:
+            STR1 = URL.partition("https://github.com/")
+            STR2=STR1[2].partition("/")
+            print STR2[2]
+            path = ROOT_DIRECTORY +"/"+ STR2[2]
+            if not os.path.exists(path):
+                print path
+                os.makedirs(path, 0755)
+            else:
+                print "Path exists"
+            print pattern
+            cmd_string = "git clone %s %s" %(pattern, path)
+            os.system(cmd_string)
+        return
+    except OSError as error:
+        print error
+
 
 start()
