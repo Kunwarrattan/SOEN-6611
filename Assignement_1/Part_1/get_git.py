@@ -4,9 +4,16 @@ __author__ = 'kunwar'
 import requests
 from bs4 import BeautifulSoup
 
-FILE = open("Config.txt","r")
 
-def start():
+with open("Config.txt","rwu") as f:
+    for line in f:
+        print line
+        cleanedLine = line.strip()
+        if cleanedLine: # is not empty
+            print(cleanedLine)
+
+FILE = open("Config.txt","r")
+def FilterURL():
     STR1 = FILE.readline().partition("url = ")
     URL= STR1[2]
 
@@ -26,7 +33,7 @@ def start():
     return
 
 def clone(URL, ROOT_DIRECTORY):
-
+    import datetime
     import re,os, sys,urllib2
     content = urllib2.urlopen(URL).read()
     pattern = URL + ".git"
@@ -49,4 +56,4 @@ def clone(URL, ROOT_DIRECTORY):
         print error
 
 
-start()
+FilterURL()
