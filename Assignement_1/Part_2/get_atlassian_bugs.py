@@ -29,7 +29,7 @@ def Filter_File():
     for x in range(int(BUG_START), int(BUG_END)):
         MTS = randint(1,MTS)
         time.sleep(MTS)
-        string_url = "https://"+URL+".atlassian.net"+"/browse/WEBSITE-"+str(BUG_NUMBER)+"?jql="
+        string_url = "https://"+URL+".atlassian.net"+"/browse/"+PROJECT_TAG+"-"+str(BUG_NUMBER)+"?jql="
         print string_url
         Get_Content(string_url,BUG_NUMBER,ROOT_DIRECTORY)
         BUG_NUMBER = BUG_NUMBER+1

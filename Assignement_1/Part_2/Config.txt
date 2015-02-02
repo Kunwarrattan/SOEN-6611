@@ -1,4 +1,4 @@
-url = https://hibernate.atlassian.net/browse/BVAL-60
+url = hibernate
 project_tag = BVAL
 bug_start = 60
 bug_end = 100
