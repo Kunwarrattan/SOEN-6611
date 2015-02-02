@@ -5,14 +5,8 @@ import requests
 from bs4 import BeautifulSoup
 
 
-#with open("Config.txt","rwu") as f:
- ##   for line in f:
-  ##      print line
-   ##     cleanedLine = line.strip()
-    ##    if cleanedLine: # is not empty
-     #       print(cleanedLine)
-
 FILE = open("Config.txt","r")
+
 def FilterURL():
     STR1 = FILE.readline().partition("url = ")
     URL= STR1[2]

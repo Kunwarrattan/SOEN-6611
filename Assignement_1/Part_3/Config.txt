@@ -1,1 +1,1 @@
-url=https://github.com/poise/python
+root_directory=/home/kunwar/documents/Repo
