@@ -31,7 +31,7 @@ def clone(URL, ROOT_DIRECTORY):
     import re,os, sys,urllib2
     content = urllib2.urlopen(URL).read()
     pattern = URL + ".git"
-    print pattern
+   # print pattern
     try:
         if pattern in content:
             STR1 = URL.partition("https://github.com/")
